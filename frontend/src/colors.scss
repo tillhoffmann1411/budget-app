@@ -1,0 +1,17 @@
+
+.colors {
+  
+  --background: #000000;
+  --background2: #414d57;
+  --input-background: #52626e;
+  --primary: #FF8A1F;
+  --accent: #0D8ABC;
+  --font-color: #ffffff;
+  --on-primary-font: #ffffff;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--font-color);
+  background-color: var(--background);;
+}

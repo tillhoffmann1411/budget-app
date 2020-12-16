@@ -1,0 +1,4 @@
+Django
+uWSGI
+psycopg2-binary
+djangorestframework
