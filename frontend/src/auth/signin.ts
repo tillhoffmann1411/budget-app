@@ -16,7 +16,9 @@ class SignIn extends LitElement {
       <div class="signin-form">
         <app-input type="text" id="username" label="Username" placeholder=""></app-input>
         <app-input type="password" id="password" label="Password" placeholder=""></app-input>
-        <app-button @click="${this.signin}">Login</app-button>
+        <div>
+          <app-button type="submit" @click="${this.signin}">Login</app-button>
+        </div>
       </div>
     `;
   }

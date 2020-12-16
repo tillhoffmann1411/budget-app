@@ -2,6 +2,7 @@ import { LitElement, html, css, property } from "lit-element";
 
 export class ActionButton extends LitElement {
   @property() click: () => void;
+  @property({ type: String }) type: string;
 
   static get styles() {
     return css`
@@ -44,7 +45,7 @@ export class ActionButton extends LitElement {
 
   render() {
     return html`
-      <button @click="${this.click}">
+      <button type="${this.type}" @click="${this.click}">
         <slot></slot>
       </button>
     `;
