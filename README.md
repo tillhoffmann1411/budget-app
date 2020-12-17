@@ -2,7 +2,7 @@
 
 ## Setup
 
-1. Create a .env file in the root folder with following parameters
+1. Create a .env file in the root folder with following parameters (you should change at least the SECRET_KEY)
 ```
 DEBUG=True
 SECRET_KEY=kflaDGA23G4fga75420HhfdDFG6552234sGDGW
