@@ -3,15 +3,21 @@
   
   --background: #000000;
   --background2: #414d57;
-  --input-background: #52626e;
-  --primary: #FF8A1F;
-  --accent: #0D8ABC;
+  --input-background: #034144;
+  --primary: #49BEB7;
+  --red: #FF5959;
+  --green: #52BE49;
+  --info: #FFDA59;
   --font-color: #ffffff;
-  --on-primary-font: #ffffff;
+  --on-primary-font: #000000;
 }
 
 body {
   font-family: 'Montserrat', sans-serif;
   color: var(--font-color);
   background-color: var(--background);;
+}
+
+a {
+  color: var(--primary);
 }

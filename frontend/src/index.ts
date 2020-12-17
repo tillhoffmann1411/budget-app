@@ -1,7 +1,15 @@
+import { AppRouter } from './router';
+
 import './colors.scss';
 
 import './shared/app-button';
 import './shared/app-input';
-import './auth/signin';
+import './components/signin-view';
+import './components/home-view';
+import './components/not-found-view';
 
-document.body.classList.add('colors');
+export let Router: AppRouter;
+
+window.addEventListener('load', () => {
+  Router = new AppRouter(document.querySelector('main'));
+});

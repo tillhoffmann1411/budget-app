@@ -1,5 +1,6 @@
 const path = require("path");
 const dist = path.resolve(__dirname, "dist");
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HtmlWebpackHarddiskPlugin = require("html-webpack-harddisk-plugin");
 
@@ -40,7 +41,10 @@ module.exports = {
   devServer: {
     contentBase: dist,
     compress: true,
-    port: 4200
+    port: 4200,
+    historyApiFallback: {
+      disableDotRule: true
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -3,6 +3,12 @@ import { LitElement, html, css, property } from "lit-element";
 export class ActionButton extends LitElement {
   @property() click: () => void;
   @property({ type: String }) type: string;
+  @property({ type: Boolean }) isPrimary: boolean = false;
+
+  constructor() {
+    super();
+    this.isPrimary = false;
+  }
 
   static get styles() {
     return css`
@@ -19,8 +25,8 @@ export class ActionButton extends LitElement {
     }
     
     button.secondary {
-      background: var(--input-background);
-      color: var(--font-color);
+      background: transparent;
+      color: var(--primary);
     }
     
     button.primary {
@@ -44,8 +50,9 @@ export class ActionButton extends LitElement {
   }
 
   render() {
+    console.log('is primary?', this.isPrimary);
     return html`
-      <button type="${this.type}" @click="${this.click}">
+      <button class="${this.isPrimary ? 'primary' : 'secondary'}" type="${this.type}" @click="${this.click}">
         <slot></slot>
       </button>
     `;

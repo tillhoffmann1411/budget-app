@@ -26,7 +26,7 @@ class AppInput extends LitElement {
 
       input:focus {
         outline: none;
-        border: 2px var(--accent) solid;
+        border: 2px var(--primary) solid;
       }
     `;
   }

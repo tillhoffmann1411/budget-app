@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "module": "es6",
+    "baseUrl": "/",
+    "module": "esnext",
     "target": "es6",
     "sourceMap": true,
     "experimentalDecorators": true,
