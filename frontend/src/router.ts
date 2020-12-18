@@ -8,7 +8,7 @@ export class AppRouter extends Router {
   }
 
   initRoutes() {
-    this.setRoutes([
+    super.setRoutes([
       {
         path: '/',
         component: 'app-home'
@@ -16,6 +16,10 @@ export class AppRouter extends Router {
       {
         path: '/signin',
         component: 'app-signin',
+      },
+      {
+        path: '/signup',
+        component: 'app-signup',
       },
       {
         path: '(.*)', // Page not found

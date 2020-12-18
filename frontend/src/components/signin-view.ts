@@ -1,5 +1,6 @@
 import { Router } from '../index';
 import { html, css, customElement, LitElement } from "lit-element";
+import { BaseView } from './base-view';
 
 @customElement('app-signin')
 export class SignInView extends LitElement {
@@ -16,8 +17,8 @@ export class SignInView extends LitElement {
         
       .actions {
         display: flex;
-        flex-direction: row-reverse;
         margin: 15px;
+        justify-content: flex-end;
       }
     `;
   }
@@ -28,6 +29,7 @@ export class SignInView extends LitElement {
         <app-input type="text" id="username" label="Username" placeholder=""></app-input>
         <app-input type="password" id="password" label="Password" placeholder=""></app-input>
         <div class="actions">
+          <app-button type="submit" @click="${this.signup}">Register</app-button>
           <app-button ?isPrimary="${true}" type="submit" @click="${this.signin}">Login</app-button>
         </div>
       </div>
@@ -36,6 +38,10 @@ export class SignInView extends LitElement {
 
   signin() {
     Router.render('/');
+  }
+
+  signup() {
+    Router.render('/signup');
   }
 
 }
