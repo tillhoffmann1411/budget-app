@@ -1,11 +1,9 @@
-import { html, css, customElement, LitElement } from "lit-element";
+import { html, customElement } from "lit-element";
+import { BaseView } from './base-view';
+import './home-view.scss';
 
 @customElement('app-home')
-export class Home extends LitElement {
-
-  static get styles() {
-    return css``;
-  }
+export class Home extends BaseView {
 
   constructor() {
     super();

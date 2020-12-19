@@ -1,35 +1,14 @@
-import { LitElement, html, property, css } from "lit-element";
+import { html, property, customElement } from "lit-element";
+import { BaseView } from '../components/base-view';
+import './app-input.scss';
 
-class AppInput extends LitElement {
+@customElement('app-input')
+export class AppInput extends BaseView {
   @property({ type: String }) id: string;
   @property({ type: String }) label: string;
   @property({ type: String }) type: string;
   @property({ type: String }) placeholder: string;
 
-  static get styles() {
-    return css`
-      .form-group {
-        display: flex;
-        flex-direction: column;
-        padding: 5px
-      }
-      label {
-        padding: 0.5rem;
-      }
-      input {
-        color: var(--font-color);
-        padding: 0.7rem;
-        border: 2px solid var(--input-background);
-        background: var(--input-background);
-        border-radius: 10px;
-      }
-
-      input:focus {
-        outline: none;
-        border: 2px var(--primary) solid;
-      }
-    `;
-  }
 
   constructor() {
     super();
@@ -50,6 +29,3 @@ class AppInput extends LitElement {
   }
 
 }
-
-
-customElements.define("app-input", AppInput);

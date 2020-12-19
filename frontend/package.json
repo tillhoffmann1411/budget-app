@@ -11,7 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "@vaadin/router": "^1.7.2",
-    "lit-element": "^2.4.0"
+    "lit-element": "^2.4.0",
+    "nanoid": "^3.1.20",
+    "pwa-helpers": "^0.9.1",
+    "redux": "^4.0.5",
+    "reselect": "^4.0.0"
   },
   "devDependencies": {
     "css-loader": "^5.0.1",

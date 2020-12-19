@@ -1,5 +1,6 @@
-import { html, css, customElement } from "lit-element";
+import { html, customElement } from "lit-element";
 import { BaseView } from './base-view';
+import './not-found-view.scss';
 
 @customElement('app-not-found')
 export class NotFoundView extends BaseView {

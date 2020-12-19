@@ -1,0 +1,24 @@
+@use '../colors.scss' as c;
+
+app-input {
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    padding: 5px
+  }
+  label {
+    padding: 0.5rem;
+  }
+  input {
+    color: c.$font-color;
+    padding: 0.7rem;
+    border: 2px solid c.$input-background;
+    background: c.$input-background;
+    border-radius: 10px;
+  }
+
+  input:focus {
+    outline: none;
+    border: 2px c.$primary solid;
+  }
+}
