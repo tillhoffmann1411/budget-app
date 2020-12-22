@@ -1,9 +1,19 @@
+import { IUser } from '../models/user';
 
-export const SIGNIN = 'SIGNIN';
-export const SIGNOUT = 'SIGNOUT';
-export const SIGNUP = 'SIGNUP';
+export const SETUSER = 'Set User';
+export const REMOVEUSER = 'Remove User';
 
 
-export const signup = (username: string, email: string, firstName: string, lastName: string, password: string) => {
+export const setUser = (user: IUser, token: string) => {
+  return {
+    type: SETUSER,
+    user,
+    token
+  }
+}
 
+export const removeUser = () => {
+  return {
+    type: REMOVEUSER,
+  }
 }

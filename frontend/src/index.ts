@@ -5,10 +5,11 @@ import './colors.scss';
 import './shared/app-button';
 import './shared/app-input';
 
-import './components/signin-view';
-import './components/signup-view';
 import './components/home-view';
 import './components/not-found-view';
+
+import './user-module/signin-view';
+import './user-module/signup-view';
 
 export let Router: AppRouter;
 

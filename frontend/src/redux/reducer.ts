@@ -1,25 +1,41 @@
-export const UserFilters = {};
+import { ITransaction } from '../models/transaction';
+import { IUser } from '../models/user';
+import { REMOVEUSER, SETUSER } from './actions';
 
-export interface IUserState {
-  id: number;
-  logedIn: boolean;
-  username: string;
-  email: string;
-  firstName: string;
-  lastName: string;
+export interface IAppState {
+  user: IUser | null;
+  auth: {
+    token: string | null;
+    logedIn: boolean;
+  }
+  transactions: ITransaction[];
 }
 
-const INITIAL_STATE: IUserState = {
-  logedIn: false,
-  username: '',
-  email: '',
-  firstName: '',
-  lastName: '',
-  id: NaN
+const INITIAL_STATE: IAppState = {
+  user: null,
+  auth: {
+    token: null,
+    logedIn: false
+  },
+  transactions: []
 }
 
 export const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case SETUSER:
+      console.log('seting user: ', action);
+      return {
+        ...state,
+        auth: {
+          token: action.token,
+          logedIn: true
+        },
+        user: action.user
+      };
+
+    case REMOVEUSER:
+      return INITIAL_STATE;
+
     default:
       return state;
   }

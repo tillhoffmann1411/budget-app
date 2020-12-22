@@ -1,7 +1,8 @@
 import { Router } from '../index';
 import { html, customElement } from "lit-element";
-import { BaseView } from './base-view';
+import { BaseView } from '../components/base-view';
 import './signin-view.scss';
+import { AuthService } from './services/auth.service';
 
 @customElement('app-signin')
 export class SignInView extends BaseView {
@@ -23,8 +24,12 @@ export class SignInView extends BaseView {
     `;
   }
 
-  signin() {
-    Router.render('/');
+  async signin() {
+    const user = await AuthService.signin({ username: 'JohnDoe', password: 'password123' });
+    console.log('user:', user);
+    if (user) {
+      Router.render('/');
+    }
   }
 
   signup() {

@@ -4,14 +4,14 @@ import { connect } from 'pwa-helpers'
 import { store } from '../redux/store';
 import { Router } from '../index';
 import { BaseView } from '../components/base-view';
-import { IUserState } from '../redux/reducer';
+import { IAppState } from '../redux/reducer';
 
 @customElement('app-navbar')
 export class AppNavbar extends connect(store)(BaseView) {
   isLogedIn = false;
 
-  stateChanged(state: IUserState) {
-    this.isLogedIn = state.logedIn;
+  stateChanged(state: IAppState) {
+    this.isLogedIn = state.auth.logedIn;
   }
 
   render() {
