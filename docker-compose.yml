@@ -11,7 +11,6 @@ services:
         - './frontend/node_modules:/app/node_modules'
       ports:
         - 4200:4200
-      restart: on-failure
     
   django:
     build:
