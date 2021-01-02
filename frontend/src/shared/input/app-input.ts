@@ -1,5 +1,5 @@
 import { html, property, customElement } from "lit-element";
-import { BaseView } from '../components/base-view';
+import { BaseView } from '../../components/base-view';
 import './app-input.scss';
 
 @customElement('app-input')

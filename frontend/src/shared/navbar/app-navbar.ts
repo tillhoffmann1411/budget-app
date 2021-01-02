@@ -1,10 +1,10 @@
 import { customElement, html } from 'lit-element';
 import { connect } from 'pwa-helpers'
 
-import { store } from '../redux/store';
-import { Router } from '../index';
-import { BaseView } from '../components/base-view';
-import { IAppState } from '../redux/reducer';
+import { store } from '../../redux/store';
+import { Router } from '../../index';
+import { BaseView } from '../../components/base-view';
+import { IAppState } from '../../redux/reducer';
 
 @customElement('app-navbar')
 export class AppNavbar extends connect(store)(BaseView) {
