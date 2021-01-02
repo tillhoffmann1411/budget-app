@@ -1,8 +1,8 @@
-import { Router } from '../index';
+import { Router } from '../../../index';
 import { html, customElement } from "lit-element";
-import { BaseView } from '../components/base-view';
+import { BaseView } from '../../../components/base-view';
 import './signin-view.scss';
-import { AuthService } from './services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @customElement('app-signin')
 export class SignInView extends BaseView {

@@ -11,7 +11,7 @@ export class AppRouter extends Router {
     super.setRoutes([
       {
         path: '/',
-        component: 'app-home'
+        component: 'app-signin'
       },
       {
         path: '/signin',
