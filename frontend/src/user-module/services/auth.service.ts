@@ -1,4 +1,4 @@
-import { IUser } from '../../models/user';
+import { IUser } from '../../interfaces/user';
 import { removeUser, setUser } from '../../redux/actions';
 import { store } from '../../redux/store';
 

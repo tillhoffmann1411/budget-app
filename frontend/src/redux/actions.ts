@@ -1,4 +1,4 @@
-import { IUser } from '../models/user';
+import { IUser } from '../interfaces/user';
 
 export const SETUSER = 'Set User';
 export const REMOVEUSER = 'Remove User';

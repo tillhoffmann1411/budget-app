@@ -3,13 +3,12 @@ import { AppRouter } from './router';
 import './colors.scss';
 import './style.scss';
 
-import './shared/button/app-button';
-import './shared/input/app-input';
+import './components/home/home-view';
+import './components/not-found/not-found-view';
 
-import './components/home-view';
-import './components/not-found-view';
-
+import './shared/index';
 import './user-module/index';
+
 
 export let Router: AppRouter;
 

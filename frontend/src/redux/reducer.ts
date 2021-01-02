@@ -1,5 +1,5 @@
-import { ITransaction } from '../models/transaction';
-import { IUser } from '../models/user';
+import { ITransaction } from '../interfaces/transaction';
+import { IUser } from '../interfaces/user';
 import { REMOVEUSER, SETUSER } from './actions';
 
 export interface IAppState {
