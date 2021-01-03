@@ -1,11 +1,11 @@
-import { router } from '../../../index';
+import { router } from '../../router';
 import { html, customElement } from "lit-element";
-import { BaseView } from '../../../components/base-view';
-import './signup-view.scss';
+import { BaseView } from '../../shared/base-view';
+import './register-view.scss';
 import { AuthService } from '../../services/auth.service';
 
-@customElement('app-signup')
-export class SignupView extends BaseView {
+@customElement('app-register')
+export class RegisterView extends BaseView {
 
   constructor() {
     super();
@@ -13,7 +13,7 @@ export class SignupView extends BaseView {
 
   render() {
     return html`
-      <div class="signin-form">
+      <div class="login-form">
         <app-input type="text" id="username" label="Username" placeholder=""></app-input>
         <app-input type="email" id="email" label="Email" placeholder=""></app-input>
         <app-input type="text" id="first_name" label="First name" placeholder=""></app-input>
@@ -21,15 +21,15 @@ export class SignupView extends BaseView {
         <app-input type="password" id="password1" label="Password" placeholder=""></app-input>
         <app-input type="password" id="password2" label="Repeat password" placeholder=""></app-input>
         <div class="actions">
-          <app-button @click="${() => router.navigate('/user/signin')}" title="Login"></app-button>
-          <app-button ?isPrimary="${true}" type="submit" @click="${this.signup}" title="Register"></app-button>
+          <app-button @click="${() => router.navigate('login')}" title="Login"></app-button>
+          <app-button ?isPrimary="${true}" type="submit" @click="${this.register}" title="Register"></app-button>
         </div>
       </div>
     `;
   }
 
-  async signup() {
-    const user = await AuthService.signup({ username: 'JohnDoe', password: 'password123' });
+  async register() {
+    const user = await AuthService.register({ username: 'JohnDoe', password: 'password123' });
     console.log('user:', user);
     if (user) {
       router.navigate('/');

@@ -1,5 +1,7 @@
-app-signup {
-  .signin-form {
+@use '../../colors.scss';
+
+app-login {
+  .login-form {
     max-width: 30em;
   }
     

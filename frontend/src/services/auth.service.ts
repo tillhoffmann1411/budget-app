@@ -1,10 +1,10 @@
-import { IUser } from '../../interfaces/user';
-import { removeUser, setUser } from '../../redux/actions';
-import { store } from '../../redux/store';
+import { IUser } from '../interfaces/user';
+import { removeUser, setUser } from '../redux/actions';
+import { store } from '../redux/store';
 
 export class AuthService {
 
-  static signup(credentials: { username: string, password: string, email?: string, firstName?: string, lastName?: string }): Promise<IUser> {
+  static register(credentials: { username: string, password: string, email?: string, firstName?: string, lastName?: string }): Promise<IUser> {
     // TODO
     return new Promise<IUser>(() => {
       const user: IUser = {
@@ -16,7 +16,7 @@ export class AuthService {
     });
   }
 
-  static signin(credentials: { username: string, password: string }): Promise<IUser> {
+  static login(credentials: { username: string, password: string }): Promise<IUser> {
     // TODO
     return new Promise<IUser>(() => {
       console.log('logging in ....');

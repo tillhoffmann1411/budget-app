@@ -2,9 +2,9 @@ import { customElement, html } from 'lit-element';
 import { connect } from 'pwa-helpers'
 
 import { store } from '../../redux/store';
-import { BaseView } from '../../components/base-view';
+import { BaseView } from '../base-view';
 import { IAppState } from '../../redux/reducer';
-import { router } from '../..';
+import { router } from '../../router';
 
 @customElement('app-navbar')
 export class AppNavbar extends connect(store)(BaseView) {
@@ -27,8 +27,8 @@ export class AppNavbar extends connect(store)(BaseView) {
 
   getNotLogedIn() {
     return html`
-      <app-button @click="${() => router.navigate('/user/signin')}" title="Login"></app-button>
-      <app-button @click="${() => router.navigate('/user/signup')}" title="Register"></app-button>
+      <app-button @click="${() => router.navigate('login')}" title="Login"></app-button>
+      <app-button @click="${() => router.navigate('register')}" title="Register"></app-button>
     `;
   }
 
