@@ -5,3 +5,4 @@ djangorestframework
 djangorestframework-simplejwt
 django-rest-auth
 django-rest-auth[with_social]
+django-cors-headers

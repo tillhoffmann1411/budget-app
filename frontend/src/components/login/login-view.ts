@@ -25,8 +25,8 @@ export class LoginView extends ComponentMixin(LitElement) {
   }
 
   async login() {
-    const user = await UserService.login({ username: 'JohnDoe', password: 'password123' });
-    console.log('user:', user);
+    const response = await UserService.login({ username: 'JohnDoe', password: 'monkey67' });
+    console.log(response);
   }
 
 }

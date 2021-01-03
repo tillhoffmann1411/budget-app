@@ -17,6 +17,9 @@ SECRET_KEY = env.get('SECRET_KEY')
 DEBUG = env.get('DEBUG')
 
 ALLOWED_HOSTS = env.get('DJANGO_ALLOWED_HOSTS').split(' ')
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:4200',
+]
 
 
 # Application definition
@@ -33,6 +36,8 @@ INSTALLED_APPS = [
     'accounts',
     'transactions.apps.TransactionsConfig',
 
+    'corsheaders',
+
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
@@ -43,9 +48,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -67,7 +73,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
 }
