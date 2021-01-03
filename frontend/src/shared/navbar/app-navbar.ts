@@ -1,15 +1,22 @@
 import { customElement, html, LitElement } from 'lit-element';
 
 import { ComponentMixin } from '../component.mixin';
-import { IAppState } from '../../redux/reducer';
 import { router } from '../../router';
+import { store } from '../../redux/store';
+import { removeUser } from '../../redux/actions';
 
 @customElement('app-navbar')
 export class AppNavbar extends ComponentMixin(LitElement) {
   isLogedIn = false;
 
-  stateChanged(state: IAppState) {
-    this.isLogedIn = state.auth.logedIn;
+  constructor() {
+    super();
+    store.subscribe(() => {
+      if (this.isLogedIn !== store.getState().auth.logedIn) {
+        this.isLogedIn = store.getState().auth.logedIn;
+        this.requestUpdate();
+      }
+    })
   }
 
   render() {
@@ -37,7 +44,7 @@ export class AppNavbar extends ComponentMixin(LitElement) {
   }
 
   logout() {
-
+    store.dispatch(removeUser());
   }
 
 }

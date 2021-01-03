@@ -19,11 +19,14 @@ import './components/login/login.component';
 import './components/register/register.component';
 import './components/transaction/transaction.component';
 import { router } from './router';
+import { store } from './redux/store';
+import { setUser } from './redux/actions';
 
 
 window.onload = checkUser;
 function checkUser() {
   if (localStorage.getItem('token')) {
+    store.dispatch(setUser({ username: '', id: NaN }, localStorage.getItem('token')));
     router.navigate('transaction');
   }
   else {

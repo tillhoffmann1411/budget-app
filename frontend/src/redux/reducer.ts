@@ -1,4 +1,5 @@
 import { IState } from '../interfaces/state';
+import { router } from '../router';
 import { REMOVEUSER, SETUSER } from './actions';
 
 const INITIAL_STATE: IState = {
@@ -25,6 +26,7 @@ export const reducer = (state = INITIAL_STATE, action) => {
 
     case REMOVEUSER:
       window.localStorage.clear();
+      router.navigate('login');
       return INITIAL_STATE;
 
     default:
