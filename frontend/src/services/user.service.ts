@@ -5,13 +5,12 @@ import { store } from '../redux/store';
 export class UserService {
   public static baseurl = 'http://0.0.0.0:8000'
 
-  static register(credentials: { username: string, password: string, email?: string, name?: string }): Promise<any> {
+  static register(credentials: { username: string, password: string, email?: string }): Promise<{ token: string, user: { email: string, pk: number, username: string } }> {
     const user = {
       username: credentials.username,
       password1: credentials.password,
       password2: credentials.password,
       email: credentials.email,
-      name: credentials.name,
     }
 
     const param = {

@@ -79,6 +79,10 @@ REST_FRAMEWORK = {
     ),
 }
 
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
+}
+
 SITE_ID = 1
 
 TEMPLATES = [
@@ -159,3 +163,7 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'accounts.Account'
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+ACCOUNT_ADAPTER = 'accounts.adapter.CustomAccountAdapter'
+
+REGISTER_VIEW = 'accounts.views.CustomRegisterView'

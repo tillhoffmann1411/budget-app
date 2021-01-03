@@ -11,9 +11,22 @@ import './shared/input/app-input';
 import './shared/navbar/app-navbar';
 
 
-import './components/root/root-view';
-import './components/not-found/not-found-view';
-import './components/root/root-view';
-import './components/not-found/not-found-view';
-import './components/login/login-view';
-import './components/register/register-view';
+import './components/root/root.component';
+import './components/not-found/not-found.component';
+import './components/root/root.component';
+import './components/not-found/not-found.component';
+import './components/login/login.component';
+import './components/register/register.component';
+import './components/transaction/transaction.component';
+import { router } from './router';
+
+
+window.onload = checkUser;
+function checkUser() {
+  if (localStorage.getItem('token')) {
+    router.navigate('transaction');
+  }
+  else {
+    router.navigate('login');
+  }
+};

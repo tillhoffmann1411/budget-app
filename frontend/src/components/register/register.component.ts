@@ -1,8 +1,10 @@
 import { router } from '../../router';
 import { html, customElement, LitElement, query } from "lit-element";
 import { ComponentMixin } from '../../shared/component.mixin';
-import './register-view.scss';
+import './register.component.scss';
 import { UserService } from '../../services/user.service';
+import { removeUser, setUser } from '../../redux/actions';
+import { store } from '../../redux/store';
 
 @customElement('app-register')
 export class RegisterView extends ComponentMixin(LitElement) {
@@ -14,9 +16,6 @@ export class RegisterView extends ComponentMixin(LitElement) {
 
   @query("#email")
   email!: HTMLInputElement;
-
-  @query("#name")
-  name!: HTMLInputElement;
 
   @query("#password")
   password!: HTMLInputElement;
@@ -31,7 +30,6 @@ export class RegisterView extends ComponentMixin(LitElement) {
       <form class="login-form">
         <app-input type="text" id="username" label="Username" placeholder=""></app-input>
         <app-input type="email" id="email" label="Email" placeholder=""></app-input>
-        <app-input type="text" id="name" label="Name" placeholder=""></app-input>
         <app-input type="password" id="password" label="Password" placeholder=""></app-input>
         <section class="actions">
           <app-button @click="${() => router.navigate('login')}" type="button" title="Login"></app-button>
@@ -58,14 +56,14 @@ export class RegisterView extends ComponentMixin(LitElement) {
       const response = await UserService.register({
         username: this.username.value,
         password: this.password.value,
-        name: this.name.value,
         email: this.email.value
       });
-      console.log(response);
-      if (response.status === 200) {
-        console.log(response.body);
+
+      if (response.token) {
+        store.dispatch(setUser({ username: response.user.username, id: response.user.pk, email: response.user.email }, response.token));
         router.navigate('/transaction');
       } else {
+        store.dispatch(removeUser());
         console.log('Login fehlgeschlagen!');
       }
     }

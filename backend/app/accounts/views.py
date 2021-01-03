@@ -1,6 +1,7 @@
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http import HttpResponse, JsonResponse
+from rest_framework.views import APIView
 
 from .models import Account
 from .serializers import AccountSerializer
@@ -52,3 +53,34 @@ def account_detail(request, pk):
     elif request.method == 'DELETE':
         account.delete()
         return HttpResponse(status=204)
+
+
+class CustomRegisterView(APIView):
+    """
+        User Registration API
+    """
+
+    def post(self, request):
+        serializer = AccountSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            if user:
+                token = Token.objects.create(user=user)
+                # json = serializer.data
+                # json['token'] = token.key
+                response = {
+                    user: {
+                        'id': user.pk,
+                        'username': user.username,
+                        'email': user.email,
+                    },
+                    'token': token
+                }
+                return Response(response, status=status.HTTP_201_CREATED)
+
+        # json = serializer.errors
+        response = {
+            'result': 0,
+            'msg': "User with email is already registered."
+        }
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)

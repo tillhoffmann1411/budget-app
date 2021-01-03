@@ -13,7 +13,7 @@ const INITIAL_STATE: IState = {
 export const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SETUSER:
-      console.log('seting user: ', action);
+      window.localStorage.setItem('token', action.token);
       return {
         ...state,
         auth: {
@@ -24,6 +24,7 @@ export const reducer = (state = INITIAL_STATE, action) => {
       };
 
     case REMOVEUSER:
+      window.localStorage.clear();
       return INITIAL_STATE;
 
     default:

@@ -1,10 +1,9 @@
 import { html, customElement, LitElement } from "lit-element";
 import { IState } from '../../interfaces/state';
 import { IUser } from '../../interfaces/user';
-import { store } from '../../redux/store';
 import { router } from '../../router';
 import { ComponentMixin } from '../../shared/component.mixin';
-import './root-view.scss';
+import './root.component.scss';
 
 @customElement('app-root')
 export class AppRoot extends ComponentMixin(LitElement) {
@@ -36,14 +35,14 @@ export class AppRoot extends ComponentMixin(LitElement) {
         return html`
                 <app-register></app-register>
             `
-      case 'profil':
+      case 'transaction':
         return html`
-                <app-profil></app-profil>
+                <app-transaction></app-transaction>
             `
       default:
         router.navigate('');
         return html`
-                <app-not-found></app-not-found>>
+                <app-not-found></app-not-found>
             `
     }
   }

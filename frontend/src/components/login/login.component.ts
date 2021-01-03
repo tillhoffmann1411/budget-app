@@ -1,8 +1,10 @@
 import { router } from '../../router';
 import { html, customElement, LitElement, query } from "lit-element";
 import { ComponentMixin } from '../../shared/component.mixin';
-import './login-view.scss';
+import './login.component.scss';
 import { UserService } from '../../services/user.service';
+import { store } from '../../redux/store';
+import { removeUser, setUser } from '../../redux/actions';
 
 @customElement('app-login')
 export class LoginView extends ComponentMixin(LitElement) {
@@ -48,11 +50,11 @@ export class LoginView extends ComponentMixin(LitElement) {
 
     if (valid) {
       const response = await UserService.login({ username: this.username.value, password: this.password.value });
-      console.log(response);
-      if (response.status === 200) {
-        console.log(response.body);
+      if (response.access) {
+        store.dispatch(setUser({ username: '', id: 2 }, response.access));
         router.navigate('/transaction');
       } else {
+        store.dispatch(removeUser());
         console.log('Login fehlgeschlagen!');
       }
     }
