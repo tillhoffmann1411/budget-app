@@ -10,6 +10,7 @@ class Regularity(models.Model):
 
 
 class Transaction(models.Model):
+    id = models.AutoField(primary_key=True)
     amount = models.DecimalField(max_digits=11, decimal_places=2)
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,

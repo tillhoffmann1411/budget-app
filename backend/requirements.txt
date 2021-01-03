@@ -2,3 +2,6 @@ Django
 uWSGI
 psycopg2-binary
 djangorestframework
+djangorestframework-simplejwt
+django-rest-auth
+django-rest-auth[with_social]
