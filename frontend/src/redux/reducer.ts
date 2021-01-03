@@ -1,17 +1,7 @@
-import { ITransaction } from '../interfaces/transaction';
-import { IUser } from '../interfaces/user';
+import { IState } from '../interfaces/state';
 import { REMOVEUSER, SETUSER } from './actions';
 
-export interface IAppState {
-  user: IUser | null;
-  auth: {
-    token: string | null;
-    logedIn: boolean;
-  }
-  transactions: ITransaction[];
-}
-
-const INITIAL_STATE: IAppState = {
+const INITIAL_STATE: IState = {
   user: null,
   auth: {
     token: null,

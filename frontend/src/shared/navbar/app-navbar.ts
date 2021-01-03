@@ -1,13 +1,11 @@
-import { customElement, html } from 'lit-element';
-import { connect } from 'pwa-helpers'
+import { customElement, html, LitElement } from 'lit-element';
 
-import { store } from '../../redux/store';
-import { BaseView } from '../base-view';
+import { ComponentMixin } from '../component.mixin';
 import { IAppState } from '../../redux/reducer';
 import { router } from '../../router';
 
 @customElement('app-navbar')
-export class AppNavbar extends connect(store)(BaseView) {
+export class AppNavbar extends ComponentMixin(LitElement) {
   isLogedIn = false;
 
   stateChanged(state: IAppState) {

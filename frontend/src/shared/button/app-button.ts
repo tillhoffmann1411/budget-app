@@ -1,9 +1,9 @@
-import { html, property, customElement } from "lit-element";
-import { BaseView } from '../base-view';
+import { html, property, customElement, LitElement } from "lit-element";
+import { ComponentMixin } from '../component.mixin';
 import './app-button.scss';
 
 @customElement('app-button')
-export class AppButton extends BaseView {
+export class AppButton extends ComponentMixin(LitElement) {
   @property() click: () => void;
   @property({ type: Boolean }) isPrimary: boolean = false;
 

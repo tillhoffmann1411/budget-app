@@ -1,11 +1,11 @@
 import { router } from '../../router';
-import { html, customElement } from "lit-element";
-import { BaseView } from '../../shared/base-view';
+import { html, customElement, LitElement } from "lit-element";
+import { ComponentMixin } from '../../shared/component.mixin';
 import './register-view.scss';
-import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @customElement('app-register')
-export class RegisterView extends BaseView {
+export class RegisterView extends ComponentMixin(LitElement) {
 
   constructor() {
     super();
@@ -29,7 +29,7 @@ export class RegisterView extends BaseView {
   }
 
   async register() {
-    const user = await AuthService.register({ username: 'JohnDoe', password: 'password123' });
+    const user = await UserService.register({ username: 'JohnDoe', password: 'password123' });
     console.log('user:', user);
     if (user) {
       router.navigate('/');

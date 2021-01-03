@@ -1,15 +1,23 @@
-import { html, customElement } from "lit-element";
+import { html, customElement, LitElement } from "lit-element";
+import { IState } from '../../interfaces/state';
+import { IUser } from '../../interfaces/user';
+import { store } from '../../redux/store';
 import { router } from '../../router';
-import { BaseView } from '../../shared/base-view';
+import { ComponentMixin } from '../../shared/component.mixin';
 import './root-view.scss';
 
 @customElement('app-root')
-export class AppRoot extends BaseView {
+export class AppRoot extends ComponentMixin(LitElement) {
+  user: IUser
 
   constructor() {
     super();
   }
 
+  stateChanged(state: IState) {
+    this.user = state.user;
+    this.requestUpdate();
+  }
 
   render() {
     return html`
@@ -38,5 +46,13 @@ export class AppRoot extends BaseView {
                 <app-not-found></app-not-found>>
             `
     }
+  }
+
+  async firstUpdated() {
+    router.subscribe(() => {
+      this.requestUpdate();
+    });
+    console.log("User not detected. Forcing manual login!");
+    router.navigate("login");
   }
 }

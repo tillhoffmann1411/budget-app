@@ -1,11 +1,11 @@
 import { router } from '../../router';
-import { html, customElement } from "lit-element";
-import { BaseView } from '../../shared/base-view';
+import { html, customElement, LitElement } from "lit-element";
+import { ComponentMixin } from '../../shared/component.mixin';
 import './login-view.scss';
-import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @customElement('app-login')
-export class LoginView extends BaseView {
+export class LoginView extends ComponentMixin(LitElement) {
 
   constructor() {
     super();
@@ -25,7 +25,7 @@ export class LoginView extends BaseView {
   }
 
   async login() {
-    const user = await AuthService.login({ username: 'JohnDoe', password: 'password123' });
+    const user = await UserService.login({ username: 'JohnDoe', password: 'password123' });
     console.log('user:', user);
   }
 

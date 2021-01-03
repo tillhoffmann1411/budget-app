@@ -2,7 +2,7 @@ import { IUser } from '../interfaces/user';
 import { removeUser, setUser } from '../redux/actions';
 import { store } from '../redux/store';
 
-export class AuthService {
+export class UserService {
 
   static register(credentials: { username: string, password: string, email?: string, firstName?: string, lastName?: string }): Promise<IUser> {
     // TODO
