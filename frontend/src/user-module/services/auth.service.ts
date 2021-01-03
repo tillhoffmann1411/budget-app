@@ -24,8 +24,8 @@ export class AuthService {
         id: 42,
         ...credentials,
       }
-      store.dispatch(setUser(user, 'ichbineinjwttoken'));
-      return user;
+      return store.dispatch(setUser(user, 'ichbineinjwttoken'));
+      // return user;
     });
   }
 

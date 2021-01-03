@@ -1,13 +1,10 @@
 const path = require("path");
-const dist = path.resolve(__dirname, "dist");
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const webpack = require("webpack");
 
-console.log(process.env.NODE_ENV)
 module.exports = {
   resolve: {
     extensions: [".ts", ".js", ".tsx"],
@@ -35,15 +32,13 @@ module.exports = {
       'API_SECURE': JSON.stringify('')
     }),
     new CleanWebpackPlugin(),
-    // new CopyPlugin({
-    //   patterns: [
-    //    { from: 'node_modules/@ionic/core/dist/ionic/svg', to: './svg' },
-    //   ]
-    // }),
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html",
-      favicon: "./assets/icons/favicon.ico"
+      title: "DayCash",
+      filename: "index.html",
+      template: "src/index.html",
+      favicon: "./assets/icons/favicon.ico",
+      alwaysWriteToDisk: true,
+      minify: false
     }),
     new WebpackPwaManifest({
       name: 'DayCash',
@@ -73,7 +68,7 @@ module.exports = {
         }
       ],
       ios: {
-        // "apple-touch-icon": path.resolve('./assets/icons/apple-touch-icon.png'),
+        'apple-touch-icon': path.resolve('./assets/icons/apple-touch-icon.png'),
         'apple-mobile-web-app-title': 'AppTitle',
         'apple-mobile-web-app-status-bar-style': 'black'
       },
@@ -81,11 +76,12 @@ module.exports = {
     }),
   ],
   output: {
-    filename: "bundle.js",
-    path: dist,
+    filename: "[name].js",
+    path: path.resolve(__dirname, "dist"),
+    publicPath: '/'
   },
   devServer: {
-    contentBase: dist,
+    contentBase: path.resolve(__dirname, "dist"),
     compress: true,
     port: 4200,
     historyApiFallback: {
