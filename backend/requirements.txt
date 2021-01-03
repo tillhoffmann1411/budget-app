@@ -3,6 +3,7 @@ uWSGI
 psycopg2-binary
 djangorestframework
 djangorestframework-simplejwt
+djangorestframework_jwt
 django-rest-auth
 django-rest-auth[with_social]
 django-cors-headers

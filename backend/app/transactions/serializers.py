@@ -1,12 +1,12 @@
 from rest_framework import serializers
 
 from .models import Transaction
-from accounts.models import CustomUser
+from accounts.models import Account
 
 
 class TransactionSerializer(serializers.ModelSerializer):
     user = serializers.SlugRelatedField(
-        slug_field='username', queryset=CustomUser.objects.all())
+        slug_field='username', queryset=Account.objects.all())
 
     class Meta:
         model = Transaction

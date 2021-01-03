@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+from datetime import timedelta
 
 env = os.environ
 
@@ -62,9 +63,9 @@ ROOT_URLCONF = 'budget_app.urls'
 
 REST_USE_JWT = True
 
-JWT_AUTH = {
-    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
-    'JWT_AUTH_COOKIE': 'jwt-token',
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=7),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
 }
 
 REST_FRAMEWORK = {
@@ -155,7 +156,6 @@ STATIC_URL = '/static/'
 
 # My custom settings
 
-AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = 'accounts.Account'
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+ACCOUNT_EMAIL_VERIFICATION = 'none'

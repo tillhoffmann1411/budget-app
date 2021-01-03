@@ -8,6 +8,8 @@ export class AppInput extends ComponentMixin(LitElement) {
   @property({ type: String }) label: string;
   @property({ type: String }) type: string;
   @property({ type: String }) placeholder: string;
+  @property({ type: Boolean }) required: boolean;
+  value: string;
 
 
   constructor() {
@@ -16,16 +18,22 @@ export class AppInput extends ComponentMixin(LitElement) {
     this.label = '';
     this.type = 'text';
     this.placeholder = '';
+    this.required = false;
+    this.value = '';
   }
-
 
   render() {
     return html`
-      <div class="form-group">
-        <label id="${this.id}">${this.label}</label>
-        <input id="${this.id}" type="${this.type}" placeholder="${this.placeholder}" />
-      </div>
+      <section class="form-group">
+        <label for="${this.id}">${this.label}</label>
+        <input id="${this.id}" type="${this.type}" placeholder="${this.placeholder}" ?required="${this.required}"
+          value="${this.value}" @change=${this.updateShownValue} />
+      </section>
     `;
+  }
+
+  updateShownValue(e) {
+    this.value = e.srcElement.value
   }
 
 }
