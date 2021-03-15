@@ -33,7 +33,7 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "DayCash",
+      title: "SpendDaily",
       filename: "index.html",
       template: "src/index.html",
       favicon: "./assets/icons/favicon.ico",
@@ -41,9 +41,9 @@ module.exports = {
       minify: false
     }),
     new WebpackPwaManifest({
-      name: 'DayCash',
-      short_name: 'DayCash',
-      description: 'DayCash. Your daily budget app.',
+      name: 'SpendDaily',
+      short_name: 'SpendDaily',
+      description: 'SpendDaily. Your daily budget app.',
       background_color: '#000000',
       inject: true,
       ios: true,
