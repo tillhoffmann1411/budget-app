@@ -4,7 +4,7 @@
   },
   "hosting": {
     "site": "spenddaily",
-    "public": "src",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
