@@ -1,12 +1,14 @@
 import { customElement, html, LitElement } from 'lit-element';
 
-import { ComponentMixin } from '../component.mixin';
-import { router } from '../../router';
+import { router } from '../../client-packages/router/router';
 import { store } from '../../redux/store';
 import { removeUser } from '../../redux/actions';
+import { PageMixin } from '../../client-packages/page-mixin/page.mixin';
+
+import './app-navbar.scss';
 
 @customElement('app-navbar')
-export class AppNavbar extends ComponentMixin(LitElement) {
+export class AppNavbar extends PageMixin(LitElement) {
   isLogedIn = false;
 
   constructor() {
@@ -21,25 +23,23 @@ export class AppNavbar extends ComponentMixin(LitElement) {
 
   render() {
     return html`
-      <div>
-        <nav>
-          ${this.isLogedIn ? this.getLogedIn() : this.getNotLogedIn()}
-        </nav>
-      </div>
+      <nav>
+        ${this.isLogedIn ? this.getLogedIn() : this.getNotLogedIn()}
+      </nav>
     `;
   }
 
 
   getNotLogedIn() {
     return html`
-      <app-button @click="${() => router.navigate('login')}" title="Login"></app-button>
-      <app-button @click="${() => router.navigate('register')}" title="Register"></app-button>
+      <button @click="${() => router.navigate('login')}">Login</button>
+      <button @click="${() => router.navigate('register')}">Register</button>
     `;
   }
 
   getLogedIn() {
     return html`
-      <app-button @click="${this.logout}" title="Logout"></app-button>
+      <button @click="${this.logout}">Logout</button>
     `;
   }
 

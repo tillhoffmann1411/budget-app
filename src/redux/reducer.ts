@@ -1,17 +1,17 @@
 import { IState } from '../interfaces/state';
-import { router } from '../router';
+import { router } from '../client-packages/router/router';
 import { REMOVEUSER, SETUSER } from './actions';
 
 const INITIAL_STATE: IState = {
-  user: null,
+  user: undefined,
   auth: {
-    token: null,
+    token: undefined,
     logedIn: false
   },
   transactions: []
 }
 
-export const reducer = (state = INITIAL_STATE, action) => {
+export const reducer = (state = INITIAL_STATE, action: any) => {
   switch (action.type) {
     case SETUSER:
       window.localStorage.setItem('token', action.token);

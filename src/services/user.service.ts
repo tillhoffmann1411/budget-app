@@ -1,5 +1,4 @@
-import { IUser } from '../interfaces/user';
-import { removeUser, setUser } from '../redux/actions';
+import { removeUser } from '../redux/actions';
 import { store } from '../redux/store';
 
 export class UserService {

@@ -1,0 +1,74 @@
+@use './colors.scss' as c;
+
+
+
+/* form */
+form {
+  max-width: 30em;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    
+    label {
+      padding: 0.5rem;
+    }
+    input {
+      color: c.$font-color;
+      padding: 0.7rem;
+      border: 2px solid c.$input-background;
+      background: c.$input-background;
+      border-radius: 10px;
+    }
+    
+    input:focus {
+      outline: none;
+      border: 2px c.$primary solid;
+    }
+  }
+
+  section.actions {
+    display: flex;
+    flex-direction: row;
+    margin: 15px;
+    justify-content: flex-end;
+  }
+}
+
+
+/* button */
+button {
+  color: c.$primary;
+  border: none;
+  width: fit-content;
+  background: #ffffff00;
+  padding: 10px 20px;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+button.secondary {
+  background: transparent;
+  color: c.$primary;
+}
+
+button.primary {
+  background: c.$primary;
+  color: c.$on-primary-font;
+}
+
+
+button:hover {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active {
+  transform: scale(.95);
+}

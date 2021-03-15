@@ -1,10 +1,9 @@
 export type RouteListener = (relUrl: string) => void;
 export type Unsubscribe = () => void;
-
-
 export class Router {
   private listeners: RouteListener[] = [];
   private rootPath = '/';
+  private routeHistory: string[] = [];
 
   constructor() {
     window.onpopstate = () => this.notifyListeners();
@@ -21,6 +20,7 @@ export class Router {
     if (document.getElementsByTagName('base').length > 0) {
       this.rootPath = document.getElementsByTagName('base')[0].getAttribute('href')!;
     }
+    this.routeHistory.push(location.pathname + location.search);
   }
 
   subscribe(listener: RouteListener): Unsubscribe {
@@ -31,9 +31,19 @@ export class Router {
     };
   }
 
-  navigate(relUrl: string) {
+  navigate(relUrl: string, pushHistory: boolean = true) {
     history.pushState(null, '', this.withRootPath(relUrl));
+    if(pushHistory) this.routeHistory.push(relUrl);
     this.notifyListeners();
+  }
+
+  back() {
+    const actualIndex = this.routeHistory.length - 1;
+    if(this.routeHistory[actualIndex - 1]) {
+      const backRoute = this.routeHistory[actualIndex - 1];
+      this.routeHistory.pop();
+      this.navigate(backRoute, false);
+    }
   }
 
   // e. g. 'user/sign-in' (without leading slash)
@@ -86,6 +96,8 @@ export class Router {
     if (origin !== window.location.origin) {
       return true; // target is external to the app
     }
+
+    return false;
   }
 
   private getAnchorOrigin(anchor: HTMLAnchorElement) {

@@ -1,13 +1,14 @@
 import { html, customElement, LitElement } from "lit-element";
+import { PageMixin } from '../../client-packages/page-mixin/page.mixin';
 import { IState } from '../../interfaces/state';
 import { IUser } from '../../interfaces/user';
-import { router } from '../../router';
-import { ComponentMixin } from '../../shared/component.mixin';
+import { router } from '../../client-packages/router/router';
+
 import './root.component.scss';
 
 @customElement('app-root')
-export class AppRoot extends ComponentMixin(LitElement) {
-  user: IUser
+export class AppRoot extends PageMixin(LitElement) {
+  user: IUser | undefined = undefined;
 
   constructor() {
     super();

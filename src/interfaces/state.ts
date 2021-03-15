@@ -2,9 +2,9 @@ import { ITransaction } from './transaction';
 import { IUser } from './user';
 
 export interface IState {
-  user: IUser | null;
+  user: IUser | undefined;
   auth: {
-    token: string | null;
+    token: string | undefined;
     logedIn: boolean;
   }
   transactions: ITransaction[];

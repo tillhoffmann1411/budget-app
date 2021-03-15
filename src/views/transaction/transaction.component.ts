@@ -1,9 +1,10 @@
 import { html, customElement, LitElement } from "lit-element";
-import { ComponentMixin } from '../../shared/component.mixin';
+import { PageMixin } from '../../client-packages/page-mixin/page.mixin';
+
 import './transaction.component.scss';
 
 @customElement('app-transaction')
-export class TransactionComponent extends ComponentMixin(LitElement) {
+export class TransactionComponent extends PageMixin(LitElement) {
   render() {
     return html`
       <h1>

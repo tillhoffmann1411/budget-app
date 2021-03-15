@@ -1,4 +1,6 @@
-@use './colors.scss' as c;
+@use './styles/colors.scss' as c;
+
+@import './styles/elements.scss';
 
 body {
   font-family: 'Montserrat', sans-serif;

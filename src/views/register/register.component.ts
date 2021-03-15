@@ -1,13 +1,14 @@
-import { router } from '../../router';
+import { router } from '../../client-packages/router/router';
 import { html, customElement, LitElement, query } from "lit-element";
-import { ComponentMixin } from '../../shared/component.mixin';
-import './register.component.scss';
 import { UserService } from '../../services/user.service';
 import { removeUser, setUser } from '../../redux/actions';
 import { store } from '../../redux/store';
+import { PageMixin } from '../../client-packages/page-mixin/page.mixin';
+
+import './register.component.scss';
 
 @customElement('app-register')
-export class RegisterView extends ComponentMixin(LitElement) {
+export class RegisterView extends PageMixin(LitElement) {
   @query("form")
   form!: HTMLFormElement;
 
@@ -28,12 +29,19 @@ export class RegisterView extends ComponentMixin(LitElement) {
   render() {
     return html`
       <form class="login-form">
-        <app-input type="text" id="username" label="Username" placeholder=""></app-input>
-        <app-input type="email" id="email" label="Email" placeholder=""></app-input>
-        <app-input type="password" id="password" label="Password" placeholder=""></app-input>
+        <section>
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="john@example.com" required />
+        </section>
+      
+        <section>
+          <label for="password">Password</label>
+          <input id="password" type="password" required />
+        </section>
+      
         <section class="actions">
-          <app-button @click="${() => router.navigate('login')}" type="button" title="Login"></app-button>
-          <app-button ?isPrimary="${true}" type="submit" @click="${(e) => this.register(e)}" title="Register"></app-button>
+          <button @click="${() => router.navigate('login')}" type="button">Login</button>
+          <button class="primary" type="submit" @click="${(e: MouseEvent) => this.register(e)}">Register</button>
         </section>
       </form>
     `;
